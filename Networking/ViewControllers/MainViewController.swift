@@ -80,12 +80,12 @@ enum Alert {
     }
 }
 
-
+let jsonUrl = "https://random-data-api.com/api/v2/users?size=10&is_xml=true"
 
 final class MainViewController: UICollectionViewController {
     
 	private let userActions = UserAction.allCases
-
+    
     override func viewDidLoad() {
         printOurData()
     }
@@ -232,7 +232,7 @@ extension MainViewController {
     }
   
     private func printOurData() {
-        guard let ourLink: URL = URL(string: "https://random-data-api.com/api/v2/users?size=10&is_xml=true") else {return}
+        guard let ourLink: URL = URL(string: jsonUrl) else {return}
         URLSession.shared.dataTask(with: ourLink) { data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No error description")
